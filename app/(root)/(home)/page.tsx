@@ -1,6 +1,39 @@
+import Filter from "@/components/shared/Filter";
+import NoResult from "@/components/shared/NoResult";
+import HomeFilters from "@/components/shared/home/HomeFilters";
 import LocalSearchbar from "@/components/shared/search/LocalSearchbar";
 import { Button } from "@/components/ui/button";
+import { HomePageFilters } from "@/constants/filters";
 import Link from "next/link";
+
+const questions = [
+  // {
+  //   _id: 1,
+  //   title: "Cascading Delets in SQLAlchemy",
+  //   tags: [
+  //     { _id: 1, name: "python" },
+  //     { _id: 2, name: "sql" },
+  //   ],
+  //   author: "John Doe",
+  //   upvotes: 10,
+  //   views: 100,
+  //   answers: 2,
+  //   createdAt: "2023-09",
+  // },
+  // {
+  //   _id: 2,
+  //   title: "Something Else",
+  //   tags: [
+  //     { _id: 1, name: "python" },
+  //     { _id: 2, name: "sql" },
+  //   ],
+  //   author: "John Doe",
+  //   upvotes: 10,
+  //   views: 100,
+  //   answers: 2,
+  //   createdAt: "2023-09",
+  // },
+];
 
 export default function Home() {
   return (
@@ -21,6 +54,26 @@ export default function Home() {
           placeholder="Search for questions"
           otherClasses="flex-1"
         />
+        <Filter
+          filters={HomePageFilters}
+          otherClasses="min-h-[56px] sm:min-w-[170px]"
+          containerClasses="hidden max-md:flex"
+        />
+      </div>
+      <HomeFilters />
+      <div className="mt-10 flex w-full flex-col gap-6">
+        {questions.length > 0 ? (
+          questions.map((question) => "QuestionCard")
+        ) : (
+          <NoResult
+            title="There's no questions to show"
+            description="Be the first to break the silence! 🚀 Ask a Question and kickstart the
+          discussion. our query could be the next big thing others learn from. Get
+          involved!"
+            link="/ask-question"
+            linkTitle="Ask a Question"
+          />
+        )}
       </div>
     </>
   );
