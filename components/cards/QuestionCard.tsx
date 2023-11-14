@@ -1,8 +1,8 @@
-import { Link } from "lucide-react";
 import React from "react";
 import RenderTag from "../shared/RenderTag";
 import Metric from "../shared/Metric";
-import { getTimestamp } from "@/lib/utils";
+import { formatAndDivideNumbers, getTimestamp } from "@/lib/utils";
+import Link from "next/link";
 
 interface QuestionProps {
   _id: string;
@@ -54,28 +54,28 @@ const QuestionCard = ({
           imgUrl="/assets/icons/avatar.svg"
           alt="user"
           value={author.name}
-          title=" - asked 1 hour ago"
+          title={`- asked ${getTimestamp(createdAt)}`}
           href={`/profile/${author._id}`}
           textStyles="body-medium text-dark400_light700"
         />
         <Metric
           imgUrl="/assets/icons/like.svg"
           alt="Upvotes"
-          value={upvotes}
+          value={formatAndDivideNumbers(upvotes)}
           title=" Votes"
           textStyles="small-medium text-dark400_light800"
         />
         <Metric
           imgUrl="/assets/icons/message.svg"
           alt="message"
-          value={answers.length}
+          value={formatAndDivideNumbers(answers.length)}
           title=" Answers"
           textStyles="small-medium text-dark400_light800"
         />
         <Metric
           imgUrl="/assets/icons/eye.svg"
           alt="eye"
-          value={views}
+          value={formatAndDivideNumbers(views)}
           title=" Views"
           textStyles="small-medium text-dark400_light800"
         />

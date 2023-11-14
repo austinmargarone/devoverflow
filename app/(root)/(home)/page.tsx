@@ -20,10 +20,10 @@ const questions = [
       name: "John Doe",
       picture: "https://example.com/johndoe.jpg",
     },
-    upvotes: 10,
-    views: 100,
+    upvotes: 100000000,
+    views: 100000000,
     answers: [{}, {}],
-    createdAt: new Date("2023-11-14 12:00:00"),
+    createdAt: new Date("2023-11-14 12:24:00"),
   },
   {
     _id: "2",

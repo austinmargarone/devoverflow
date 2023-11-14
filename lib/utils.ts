@@ -32,3 +32,15 @@ export const getTimestamp = (createdAt: Date): string => {
     return Math.round(elapsed / millisecondsPerYear) + " years ago";
   }
 };
+
+export const formatAndDivideNumbers = (num: number): string => {
+  if (num >= 10000000) {
+    const formattedNum = (num / 1000000).toFixed(1);
+    return `${formattedNum}M`;
+  } else if (num >= 1e3) {
+    const formattedNum = (num / 1000).toFixed(1);
+    return `${formattedNum}K`;
+  } else {
+    return num.toString();
+  }
+};
