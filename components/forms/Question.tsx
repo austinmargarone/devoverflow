@@ -1,5 +1,9 @@
 "use client";
-import React from "react";
+import React, { useRef } from "react";
+import { Editor } from "@tinymce/tinymce-react";
+import { useForm } from "react-hook-form";
+import * as z from "zod";
+
 import { Button } from "@/components/ui/button";
 import {
   Form,
@@ -12,13 +16,16 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
-import * as z from "zod";
 import { QuestionsSchema } from "@/lib/validations";
 
-export function ProfileForm() {}
-
 const Question = () => {
+  const editorRef = useRef(null);
+
+  const log = () => {
+    if (editorRef.current) {
+      console.log(editorRef.current.getContent());
+    }
+  };
   const form = useForm<z.infer<typeof QuestionsSchema>>({
     resolver: zodResolver(QuestionsSchema),
     defaultValues: {
@@ -72,7 +79,40 @@ const Question = () => {
                 Destailed explanation of your propblem
               </FormLabel>
               <FormControl className="mt-3.5">
-                {/* Add editor component */}
+                <Editor
+                  apiKey={process.env.NEXT_PUBLIC_TINY_EDITOR_API_KEY}
+                  onInit={(evt, editor) =>
+                    //   @ts-ignore
+                    (editorRef.current = editor)
+                  }
+                  initialValue=""
+                  init={{
+                    height: 350,
+                    menubar: false,
+                    plugins: [
+                      "advlist",
+                      "autolink",
+                      "lists",
+                      "link",
+                      "image",
+                      "charmap",
+                      "preview",
+                      "anchor",
+                      "searchreplace",
+                      "visualblocks",
+                      "codesample",
+                      "fullscreen",
+                      "insertdatetime",
+                      "media",
+                      "table",
+                    ],
+                    toolbar:
+                      "undo redo | " +
+                      "codesample | bold italic forecolor | alignleft aligncenter |" +
+                      "alignright alignjustify | bullist numlistt",
+                    content_style: "body { font-family:Inter; font-size:16px }",
+                  }}
+                />
               </FormControl>
               <FormDescription className="body-regular mt-2.5 text-light-500">
                 Introduce the problem and expand on what you put in the title.
