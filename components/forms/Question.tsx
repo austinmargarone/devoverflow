@@ -19,7 +19,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { QuestionsSchema } from "@/lib/validations";
 import Image from "next/image";
 import { Badge } from "../ui/badge";
-import { type } from "os";
+import { createQuestion } from "@/lib/actions/question.action";
 
 const type: any = "create";
 
@@ -36,10 +36,10 @@ const Question = () => {
     },
   });
 
-  function onSubmit(values: z.infer<typeof QuestionsSchema>) {
+  async function onSubmit(values: z.infer<typeof QuestionsSchema>) {
     setIsSubmitting(true);
     try {
-      // async call
+      await createQuestion({});
     } catch (error) {
     } finally {
       setIsSubmitting(false);
@@ -126,6 +126,8 @@ const Question = () => {
                     (editorRef.current = editor)
                   }
                   initialValue=""
+                  onBlur={field.onBlur}
+                  onEditorChange={(content) => field.onChange(content)}
                   init={{
                     height: 350,
                     menubar: false,
