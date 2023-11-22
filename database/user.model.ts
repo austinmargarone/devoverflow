@@ -7,56 +7,29 @@ export interface IUser extends Document {
   email: string;
   password?: string;
   bio?: string;
-  picture: string;
+  picture?: string;
   location?: string;
-  portfoliowebsite?: string;
+  portfolioWebsite?: string;
   reputation?: number;
   saved: Schema.Types.ObjectId[];
   joinedAt: Date;
 }
 
 const UserSchema = new Schema({
-  clerkId: {
-    type: String,
-    required: true,
-  },
-  name: {
-    type: String,
-    required: true,
-  },
+  clerkId: { type: String, required: true },
+  name: { type: String, required: true },
   username: { type: String, required: true, unique: true },
-  email: {
-    type: String,
-    required: true,
-    unique: true,
-  },
-  password: {
-    type: String,
-  },
-  bio: {
-    type: String,
-  },
-  picture: {
-    type: String,
-    required: true,
-  },
-  location: {
-    type: String,
-  },
-  portfoliowebsite: {
-    type: String,
-  },
-  reputation: {
-    type: Number,
-    default: 0,
-  },
+  email: { type: String, required: true, unique: true },
+  password: { type: String },
+  bio: { type: String },
+  picture: { type: String },
+  location: { type: String },
+  portfolioWebsite: { type: String },
+  reputation: { type: Number, default: 0 },
   saved: [{ type: Schema.Types.ObjectId, ref: "Question" }],
-  joinedAt: {
-    type: Date,
-    default: Date.now,
-  },
+  joinedAt: { type: Date, default: Date.now },
 });
 
-const User = models.Question || models.Question || model("User", UserSchema);
+const User = models.User || model("User", UserSchema);
 
 export default User;

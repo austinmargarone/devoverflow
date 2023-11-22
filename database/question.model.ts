@@ -15,15 +15,11 @@ export interface IQuestion extends Document {
 const QuestionsSchema = new Schema({
   title: {
     type: String,
-    required: true,
-    minlength: 5,
-    maxlength: 100,
+    required: true
   },
   content: {
     type: String,
-    required: true,
-    minlength: 100,
-  },
+    required: true  },
   tags: [
     {
       type: Schema.Types.ObjectId,
@@ -34,9 +30,9 @@ const QuestionsSchema = new Schema({
     type: Number,
     default: 0,
   },
-  upvotes: [{ type: Schema.Types.ObjectId, ref: "Users" }],
-  downvotes: [{ type: Schema.Types.ObjectId, ref: "Users" }],
-  author: [{ type: Schema.Types.ObjectId, ref: "Users" }],
+  upvotes: [{ type: Schema.Types.ObjectId, ref: "User" }],
+  downvotes: [{ type: Schema.Types.ObjectId, ref: "User" }],
+  author: [{ type: Schema.Types.ObjectId, ref: "User" }],
   answers: [{ type: Schema.Types.ObjectId, ref: "Answer" }],
   createdAt: {
     type: Date,

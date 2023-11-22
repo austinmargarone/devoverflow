@@ -4,6 +4,15 @@ import Question from "@/database/question.model";
 import { connectToDatabase } from "../mongoose";
 import Tag from "@/database/tag.model";
 
+// export async function getQuestions(params: any) {
+//   // eslint-disable-next-line no-undef
+//   try {
+//     connectToDatabase();
+//     const questions = await Question.find().populate("author");
+//     return questions;
+//   } catch (error) {}
+// }
+
 export async function createQuestion(params: any) {
   // eslint-disable-next-line no-undef
   try {
