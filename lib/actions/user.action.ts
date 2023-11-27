@@ -2,6 +2,7 @@
 
 import { connectToDatabase } from "../mongoose";
 import User from "@/database/user.model";
+import { CreateUserParams } from "./sharded.types";
 
 export async function getUserById(params: any) {
   try {
@@ -12,7 +13,18 @@ export async function getUserById(params: any) {
 
     return user;
   } catch (error) {
-    console.error("Error in getting user by id", error);
+    console.log(error);
+    throw error;
+  }
+}
+
+export async function createUser(userData: CreateUserParams) {
+  try {
+    connectToDatabase();
+    const newUser = await User.create(userData);
+    return newUser;
+  } catch (error) {
+    console.log(error);
     throw error;
   }
 }
