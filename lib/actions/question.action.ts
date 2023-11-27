@@ -3,18 +3,25 @@
 import Question from "@/database/question.model";
 import { connectToDatabase } from "../mongoose";
 import Tag from "@/database/tag.model";
+import { CreateQuestionParams, GetQuestionsParams } from "./sharded.types";
+import User from "@/database/user.model";
+import { revalidatePath } from "next/cache";
 
-// export async function getQuestions(params: ) {
-//   // eslint-disable-next-line no-undef
-//   try {
-//     connectToDatabase();
-//     const questions = await Question.find().populate("author");
-//     return questions;
-//   } catch (error) {}
-// }
+export async function getQuestions(params: GetQuestionsParams) {
+  try {
+    connectToDatabase();
+    const questions = await Question.find({})
+      .populate({ path: "tags", model: Tag })
+      .populate({ path: "author", model: User })
+      .sort({ createdAt: -1 });
+    return { questions };
+  } catch (error) {
+    console.log(error);
+    throw error;
+  }
+}
 
-export async function createQuestion(params: any) {
-  // eslint-disable-next-line no-undef
+export async function createQuestion(params: CreateQuestionParams) {
   try {
     connectToDatabase();
     const { title, content, tags, author, path } = params;
@@ -37,5 +44,6 @@ export async function createQuestion(params: any) {
     await question.findOneAndUpdate(question._id, {
       $push: { tags: { $each: tagDocuments } },
     });
+    revalidatePath(path);
   } catch (error) {}
 }
