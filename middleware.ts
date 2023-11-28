@@ -9,7 +9,7 @@ export default authMiddleware({
     "/api/webhook",
     "/question/:id",
     "/tags",
-    "/tags/detail",
+    "/tags/:id",
     "/profile/:id",
     "/community",
     "/jobs",
