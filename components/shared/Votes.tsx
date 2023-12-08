@@ -9,9 +9,9 @@ import { toggleSaveQuestion } from "@/lib/actions/user.action";
 import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
 import { useEffect } from "react";
-import { toast } from "../ui/use-toast";
 import { formatAndDivideNumbers } from "@/lib/utils";
 import { viewQuestion } from "@/database/interaction.action";
+import { toast } from "../ui/use-toast";
 
 interface Props {
   type: string;
