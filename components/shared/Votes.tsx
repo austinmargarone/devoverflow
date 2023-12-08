@@ -11,7 +11,7 @@ import { usePathname, useRouter } from "next/navigation";
 import { useEffect } from "react";
 import { toast } from "../ui/use-toast";
 import { viewQuestion } from "@/database/interaction.action";
-import { formatAndDivideNumbers } from "@/lib/utils";
+import { formatAndDivideNumber } from "@/lib/utils";
 
 interface Props {
   type: string;
@@ -137,7 +137,7 @@ const Votes = ({
 
           <div className="flex-center background-light700_dark400 min-w-[18px] rounded-sm p-1">
             <p className="subtle-medium text-dark400_light900">
-              {formatAndDivideNumbers(upvotes)}
+              {formatAndDivideNumber(upvotes)}
             </p>
           </div>
         </div>
@@ -158,7 +158,7 @@ const Votes = ({
 
           <div className="flex-center background-light700_dark400 min-w-[18px] rounded-sm p-1">
             <p className="subtle-medium text-dark400_light900">
-              {formatAndDivideNumbers(downvotes)}
+              {formatAndDivideNumber(downvotes)}
             </p>
           </div>
         </div>
