@@ -7,7 +7,7 @@ import {
   CreateAnswerParams,
   DeleteAnswerParams,
   GetAnswersParams,
-} from "./sharded.types";
+} from "./shared.types";
 import Question from "@/database/question.model";
 import { revalidatePath } from "next/cache";
 import Interaction from "@/database/interaction.model";
