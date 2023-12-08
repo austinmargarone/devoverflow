@@ -17,8 +17,6 @@ import {
   GetSavedQuestionsParams,
   GetUserStatsParams,
 } from "./shared.types";
-// import { BadgeCriteriaType } from "@/types";
-// import { assignBadges } from "@/lib/utils";
 
 export async function getUserById(params: any) {
   try {
@@ -77,13 +75,6 @@ export async function deleteUser(params: DeleteUserParams) {
       throw new Error("User not found");
     }
 
-    // Delete user from database
-    // and questions, answers, comments, etc.
-
-    // get user question ids
-    // const userQuestionIds = await Question.find({ author: user._id}).distinct('_id');
-
-    // delete user questions
     await Question.deleteMany({ author: user._id });
 
     // TODO: delete user answers, comments, etc.
@@ -160,14 +151,12 @@ export async function toggleSaveQuestion(params: ToggleSaveQuestionParams) {
     const isQuestionSaved = user.saved.includes(questionId);
 
     if (isQuestionSaved) {
-      // remove question from saved
       await User.findByIdAndUpdate(
         userId,
         { $pull: { saved: questionId } },
         { new: true }
       );
     } else {
-      // add question to saved
       await User.findByIdAndUpdate(
         userId,
         { $addToSet: { saved: questionId } },
@@ -386,12 +375,3 @@ export async function getUserAnswers(params: GetUserStatsParams) {
     throw error;
   }
 }
-
-// export async function getAllUsers(params: GetAllUsersParams) {
-//   try {
-//     connectToDatabase();
-//   } catch (error) {
-//     console.log(error);
-//     throw error;
-//   }
-// }
