@@ -15,11 +15,12 @@ export interface IQuestion extends Document {
 const QuestionsSchema = new Schema({
   title: {
     type: String,
-    required: true
+    required: true,
   },
   content: {
     type: String,
-    required: true  },
+    required: true,
+  },
   tags: [
     {
       type: Schema.Types.ObjectId,

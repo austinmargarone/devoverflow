@@ -3,21 +3,20 @@
 import { FilterQuery } from "mongoose";
 import User from "@/database/user.model";
 import { connectToDatabase } from "../mongoose";
-
+import {
+  CreateUserParams,
+  DeleteUserParams,
+  GetAllUsersParams,
+  GetSavedQuestionsParams,
+  GetUserByIdParams,
+  GetUserStatsParams,
+  ToggleSaveQuestionParams,
+  UpdateUserParams,
+} from "./shared.types";
 import { revalidatePath } from "next/cache";
 import Question from "@/database/question.model";
 import Tag from "@/database/tag.model";
 import Answer from "@/database/answer.model";
-import {
-  CreateUserParams,
-  UpdateUserParams,
-  DeleteUserParams,
-  GetAllUsersParams,
-  ToggleSaveQuestionParams,
-  GetSavedQuestionsParams,
-  GetUserStatsParams,
-  GetUserByIdParams,
-} from "./shared.types";
 import { BadgeCriteriaType } from "@/types";
 import { assignBadges } from "../utils";
 
@@ -78,6 +77,13 @@ export async function deleteUser(params: DeleteUserParams) {
       throw new Error("User not found");
     }
 
+    // Delete user from database
+    // and questions, answers, comments, etc.
+
+    // get user question ids
+    // const userQuestionIds = await Question.find({ author: user._id}).distinct('_id');
+
+    // delete user questions
     await Question.deleteMany({ author: user._id });
 
     // TODO: delete user answers, comments, etc.
@@ -154,12 +160,14 @@ export async function toggleSaveQuestion(params: ToggleSaveQuestionParams) {
     const isQuestionSaved = user.saved.includes(questionId);
 
     if (isQuestionSaved) {
+      // remove question from saved
       await User.findByIdAndUpdate(
         userId,
         { $pull: { saved: questionId } },
         { new: true }
       );
     } else {
+      // add question to saved
       await User.findByIdAndUpdate(
         userId,
         { $addToSet: { saved: questionId } },
@@ -341,7 +349,6 @@ export async function getUserQuestions(params: GetUserStatsParams) {
       .sort({ createdAt: -1, views: -1, upvotes: -1 })
       .skip(skipAmount)
       .limit(pageSize)
-      .populate("tags", "_id name")
       .populate("author", "_id clerkId name picture");
 
     const isNextQuestions = totalQuestions > skipAmount + userQuestions.length;
@@ -378,3 +385,12 @@ export async function getUserAnswers(params: GetUserStatsParams) {
     throw error;
   }
 }
+
+// export async function getAllUsers(params: GetAllUsersParams) {
+//   try {
+//     connectToDatabase();
+//   } catch (error) {
+//     console.log(error);
+//     throw error;
+//   }
+// }
