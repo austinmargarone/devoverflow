@@ -352,7 +352,6 @@ export async function getUserQuestions(params: GetUserStatsParams) {
       .populate("author", "_id clerkId name picture");
 
     const isNextQuestions = totalQuestions > skipAmount + userQuestions.length;
-
     return { totalQuestions, questions: userQuestions, isNextQuestions };
   } catch (error) {
     console.log(error);
