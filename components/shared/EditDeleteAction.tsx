@@ -1,5 +1,4 @@
 "use client";
-
 import { deleteAnswer } from "@/lib/actions/answer.action";
 import { deleteQuestion } from "@/lib/actions/question.action";
 import Image from "next/image";
@@ -20,13 +19,11 @@ const EditDeleteAction = ({ type, itemId }: Props) => {
 
   const handleDelete = async () => {
     if (type === "Question") {
-      // Delete question
       await deleteQuestion({
         questionId: JSON.parse(itemId),
         path: pathname,
       });
     } else if (type === "Answer") {
-      // Delete answer
       await deleteAnswer({
         answerId: JSON.parse(itemId),
         path: pathname,
