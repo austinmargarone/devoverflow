@@ -1,6 +1,6 @@
 "use server";
 
-import { FilterQuery } from "mongoose";
+import { FilterQuery, ModifyResult } from "mongoose";
 import User, { IUser } from "@/database/user.model";
 import { connectToDatabase } from "../mongoose";
 import {
@@ -71,19 +71,18 @@ export async function deleteUser(params: DeleteUserParams) {
 
     const { clerkId } = params;
 
-    const user: IUser = (await User.findOneAndDelete({ clerkId })) as IUser;
-    console.log(user);
+    const user = (await User.findOneAndDelete({
+      clerkId,
+    })) as ModifyResult<IUser>;
     if (!user) {
       throw new Error("User not found");
     }
 
-    await Question.deleteMany({ author: user._id });
+    await Question.deleteMany({ author: user.value?._id });
 
     // TODO: delete user answers, comments, etc.
 
-    const deletedUser = await User.findByIdAndDelete(user._id);
-
-    return deletedUser;
+    return user.value;
   } catch (error) {
     console.log(error);
     throw error;
