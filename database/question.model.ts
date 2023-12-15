@@ -24,7 +24,7 @@ const QuestionsSchema = new Schema({
   tags: [
     {
       type: Schema.Types.ObjectId,
-      ref: "Tags",
+      ref: "Tag",
     },
   ],
   views: {
