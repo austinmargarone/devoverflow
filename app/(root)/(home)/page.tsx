@@ -7,6 +7,13 @@ import { Button } from "@/components/ui/button";
 import { HomePageFilters } from "@/constants/filters";
 import { getQuestions } from "@/lib/actions/question.action";
 import Link from "next/link";
+import type { Metadata } from "next";
+
+export const metaData: Metadata = {
+  title: "Home | DevOverFlow",
+  description:
+    "DevOverflow is a Q&A platform for developers to ask and answer questions related to programming.",
+};
 
 export default async function Home() {
   const result = await getQuestions({});
