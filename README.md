@@ -1,8 +1,8 @@
-# devoverflow
+# Dev Overflow
 
 ## Overview
 
-Welcome to devoverflow! This repository houses the codebase for my project, currently under construction. I am diligently working to deliver an exceptional experience.
+Welcome to Dev Overflow! This repository houses the codebase for my project, currently under construction. I am diligently working to deliver an exceptional experience.
 
 ![Brick](brick.jpg)
 
