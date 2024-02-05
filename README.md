@@ -1,8 +1,8 @@
-# digital_rain
+# devoverflow
 
 ## Overview
 
-Welcome to digital_rain! This repository houses the codebase for my project, currently under construction. I am diligently working to deliver an exceptional experience.
+Welcome to devoverflow! This repository houses the codebase for my project, currently under construction. I am diligently working to deliver an exceptional experience.
 
 ![Brick](brick.jpg)
 
@@ -20,7 +20,7 @@ To set up the project locally, follow these steps:
 
 ## Usage
 
-Just enjoy the digital rain
+A Stack Overflow inspired web appliaction.
 
 ## Contributing
 
