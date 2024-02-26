@@ -7,7 +7,6 @@ import { Button } from "@/components/ui/button";
 import { HomePageFilters } from "@/constants/filters";
 import { getQuestions } from "@/lib/actions/question.action";
 import Link from "next/link";
-import type { Metadata } from "next";
 import { SearchParamsProps } from "@/types";
 
 export default async function Home({ searchParams }: SearchParamsProps) {
