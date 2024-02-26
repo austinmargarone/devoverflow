@@ -10,12 +10,6 @@ import Link from "next/link";
 import type { Metadata } from "next";
 import { SearchParamsProps } from "@/types";
 
-export const metaData: Metadata = {
-  title: "Home | DevOverFlow",
-  description:
-    "DevOverflow is a Q&A platform for developers to ask and answer questions related to programming.",
-};
-
 export default async function Home({ searchParams }: SearchParamsProps) {
   const result = await getQuestions({
     searchQuery: searchParams.q,
