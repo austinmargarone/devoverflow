@@ -8,6 +8,7 @@ import { HomePageFilters } from "@/constants/filters";
 import { getQuestions } from "@/lib/actions/question.action";
 import Link from "next/link";
 import type { Metadata } from "next";
+import { SearchParamsProps } from "@/types";
 
 export const metaData: Metadata = {
   title: "Home | DevOverFlow",
@@ -15,8 +16,10 @@ export const metaData: Metadata = {
     "DevOverflow is a Q&A platform for developers to ask and answer questions related to programming.",
 };
 
-export default async function Home() {
-  const result = await getQuestions({});
+export default async function Home({ searchParams }: SearchParamsProps) {
+  const result = await getQuestions({
+    searchQuery: searchParams.q,
+  });
   return (
     <>
       <div className="flex w-full flex-col-reverse justify-between gap-4 sm:flex-row sm:items-center">
