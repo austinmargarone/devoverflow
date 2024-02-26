@@ -12,8 +12,8 @@ interface Props {
   questionId: string;
   userId: string;
   totalAnswers: number;
-  filter: string;
-  page: number;
+  filter?: string;
+  page?: number;
 }
 
 const AllAnswers = async ({
@@ -23,7 +23,11 @@ const AllAnswers = async ({
   filter,
   page,
 }: Props) => {
-  const result = await getAnswers({ questionId });
+  const result = await getAnswers({
+    questionId,
+    page: page ? +page : 1,
+    sortBy: filter,
+  });
   return (
     <div className="mt-11">
       <div className="flex items-center justify-between">
@@ -51,7 +55,6 @@ const AllAnswers = async ({
                       {answer.author.name}
                     </p>
                     <p className="small-regular text-light400_light500 ml-0.5 mt-0.5 line-clamp-1">
-                      {" "}
                       -
                       <span className="max-sm:hidden">
                         Answered {getTimestamp(answer.createdAt)}
