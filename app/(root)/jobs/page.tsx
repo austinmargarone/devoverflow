@@ -2,9 +2,9 @@
 
 import React, { useState, useEffect } from "react";
 import JobCard from "@/components/jobs/JobCard";
-import Filter from "@/components/shared/Filter";
-import LocalSearchbar from "@/components/shared/search/LocalSearchbar";
-import { JobSearchFilters } from "@/constants/filters";
+// import Filter from "@/components/shared/Filter";
+// import LocalSearchbar from "@/components/shared/search/LocalSearchbar";
+// import { JobSearchFilters } from "@/constants/filters";
 import { fetchJobs } from "@/utils";
 
 interface Job {
@@ -48,7 +48,7 @@ export default function Page() {
     <>
       <section>
         <h1 className="h1-bold text-dark100_light900">Jobs</h1>
-        <div className="mt-11 flex justify-between gap-5 max-sm:flex-col sm:items-center">
+        {/* <div className="mt-11 flex justify-between gap-5 max-sm:flex-col sm:items-center">
           <LocalSearchbar
             route="/"
             iconPosition="left"
@@ -64,7 +64,7 @@ export default function Page() {
             }))}
             otherClasses="min-h-[56px] sm:min-w-[170px]"
           />
-        </div>
+        </div> */}
       </section>
       <section>
         <div className="mt-10">
