@@ -24,7 +24,7 @@ const JobCard = ({
 }: JobCardProps): JSX.Element => {
   return (
     <div className="card-wrapper background-light900_dark200 light-border flex w-full items-center justify-center rounded-2xl border p-8">
-      <div className="w-[10%]">
+      <div className="hidden w-[10%] md:flex">
         <Image
           src={logo}
           alt={"employer logo"}
@@ -33,7 +33,7 @@ const JobCard = ({
           className="pr-6"
         />
       </div>
-      <div className="flex w-[90%] flex-col gap-[.5rem]">
+      <div className="flex w-full flex-col gap-[.5rem] md:w-[90%]">
         <div className="flex w-full flex-col justify-between xs:flex-row">
           <div className="flex flex-col md:flex-row">
             <h3 className="h3-bold text-dark200_light900 md:flex">
