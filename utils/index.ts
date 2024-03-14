@@ -4,7 +4,7 @@ export async function fetchJobs() {
     "X-RapidAPI-Host": "jsearch.p.rapidapi.com",
   };
   const response = await fetch(
-    "https://jsearch.p.rapidapi.com/search?query=Python%20developer%20in%20Texas%2C%20USA&page=1&num_pages=1",
+    "https://jsearch.p.rapidapi.com/search?query=React%20developer%20in%20USA&page=1&num_pages=10",
     { headers }
   );
 

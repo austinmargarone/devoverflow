@@ -26,7 +26,7 @@ const JobCard = ({
     <div className="card-wrapper background-light900_dark200 light-border flex w-full items-center justify-center rounded-2xl border p-8">
       <div className="hidden w-[10%] md:flex">
         <Image
-          src={logo}
+          src={logo || "./assets/images/site-logo.svg"}
           alt={"employer logo"}
           width={1500}
           height={1500}

@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 import JobCard from "@/components/jobs/JobCard";
 import Filter from "@/components/shared/Filter";
 import LocalSearchbar from "@/components/shared/search/LocalSearchbar";
-import { QuestionFilters } from "@/constants/filters";
+import { JobSearchFilters } from "@/constants/filters";
 import { fetchJobs } from "@/utils";
 
 interface Job {
@@ -44,8 +44,6 @@ export default function Page() {
 
   const isDataEmpty = !Array.isArray(allJobs) || allJobs.length === 0;
 
-  console.log(allJobs);
-
   return (
     <>
       <section>
@@ -60,7 +58,10 @@ export default function Page() {
           />
 
           <Filter
-            filters={QuestionFilters}
+            filters={JobSearchFilters.map((filter) => ({
+              name: filter.name,
+              value: filter.value,
+            }))}
             otherClasses="min-h-[56px] sm:min-w-[170px]"
           />
         </div>
