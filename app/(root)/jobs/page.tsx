@@ -79,10 +79,8 @@ export default function Page() {
                   title={job.job_title || "Title Not Available"}
                   company={job.employer_name || "Company Not Available"}
                   location={`${job.job_city || ""}, ${job.job_state || ""}, ${job.job_country || ""}`}
-                  logo={
-                    job.employer_logo || "https://example.com/default-logo.png"
-                  } // Provide a default logo URL
-                  applyLink={job.job_apply_link || "#"} // Provide a default apply link
+                  logo={job.employer_logo || "./assets/images/site-logo.svg"}
+                  applyLink={job.job_apply_link || "#"}
                   description={
                     job.job_description || "Description Not Available"
                   }
