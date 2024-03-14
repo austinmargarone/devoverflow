@@ -13,8 +13,13 @@ interface Job {
   employer_name: string;
   job_city: string;
   job_state: string;
+  job_country: string;
   job_salary: string;
   job_posted_at_datetime_utc: string;
+  employer_logo: string;
+  job_apply_link: string;
+  job_description: string;
+  employer_website: string;
 }
 
 export default function Page() {
@@ -39,10 +44,12 @@ export default function Page() {
 
   const isDataEmpty = !Array.isArray(allJobs) || allJobs.length === 0;
 
+  console.log(allJobs);
+
   return (
     <>
       <section>
-        <h1 className="h1-bold text-dark100_light900">Saved Questions</h1>
+        <h1 className="h1-bold text-dark100_light900">Jobs</h1>
         <div className="mt-11 flex justify-between gap-5 max-sm:flex-col sm:items-center">
           <LocalSearchbar
             route="/"
@@ -60,20 +67,26 @@ export default function Page() {
       </section>
       <section>
         <div className="mt-10">
-          <div className="grid grid-cols-1 gap-5 xs:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+          <div className="flex w-full flex-col gap-10">
             {loading ? (
-              <div>Loading...</div>
+              <div className="text-dark500_light500">Loading...</div>
             ) : isDataEmpty ? (
-              <div>No jobs found</div>
+              <div className="text-dark500_light500">No jobs found</div>
             ) : (
               allJobs.map((job) => (
                 <JobCard
                   key={job.job_id}
-                  title={job.job_title}
-                  company={job.employer_name}
-                  location={`${job.job_city}, ${job.job_state}`}
-                  salary={job.job_salary}
-                  date={job.job_posted_at_datetime_utc}
+                  title={job.job_title || "Title Not Available"}
+                  company={job.employer_name || "Company Not Available"}
+                  location={`${job.job_city || ""}, ${job.job_state || ""}, ${job.job_country || ""}`}
+                  logo={
+                    job.employer_logo || "https://example.com/default-logo.png"
+                  } // Provide a default logo URL
+                  applyLink={job.job_apply_link || "#"} // Provide a default apply link
+                  description={
+                    job.job_description || "Description Not Available"
+                  }
+                  website={job.employer_website || "Website Not Available"}
                 />
               ))
             )}
