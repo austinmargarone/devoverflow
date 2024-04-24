@@ -1,14 +1,24 @@
 # Dev Overflow
 
-## Overview
 
-Welcome to Dev Overflow! This repository houses the codebase for my project, currently under construction. I am diligently working to deliver an exceptional experience.
+![Preview Image](devpreview.png)
 
-![Brick](brick.jpg)
+## Description
 
-## Status
+Discover DevFlow, your go-to platform inspired by Stack Overflow, designed for seamless collaboration and knowledge exchange among developers. Ask questions, share insights, and innovate together in our vibrant community.
 
-This project is currently under construction. We appreciate your patience as we work to bring you something remarkable.
+## Table of Contents
+
+- [Dev Overflow](#dev-overflow)
+  - [Description](#description)
+  - [Table of Contents](#table-of-contents)
+  - [Installation](#installation)
+  - [Features](#features)
+  - [Usage](#usage)
+  - [Contributing](#contributing)
+  - [License](#license)
+  - [Contact](#contact)
+
 
 ## Installation
 
@@ -16,7 +26,15 @@ To set up the project locally, follow these steps:
 
 1. [Clone](https://help.github.com/en/github/creating-cloning-and-archiving-repositories/cloning-a-repository) this repository to your local machine.
 2. Install the necessary dependencies by running `npm install` or `yarn install`.
-3. bon run preview
+3. npm run dev
+
+## Features
+
+- Create a profile
+- Ask questions
+- Answer questions
+- Colaberate and meet developers
+- Search for jobs
 
 ## Usage
 
