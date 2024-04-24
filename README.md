@@ -13,6 +13,7 @@ Discover DevFlow, your go-to platform inspired by Stack Overflow, designed for s
   - [Description](#description)
   - [Table of Contents](#table-of-contents)
   - [Installation](#installation)
+  - [Technologies Used](#technologies-used)
   - [Features](#features)
   - [Usage](#usage)
   - [Contributing](#contributing)
@@ -27,6 +28,18 @@ To set up the project locally, follow these steps:
 1. [Clone](https://help.github.com/en/github/creating-cloning-and-archiving-repositories/cloning-a-repository) this repository to your local machine.
 2. Install the necessary dependencies by running `npm install` or `yarn install`.
 3. npm run dev
+
+## Technologies Used
+
+My Real Developer Portfolio is built using the following technologies:
+
+- NextJS
+- TypeScript
+- TailwindCSS
+- Git & GitHub
+- MongoDB
+- Mongoose
+- Clerk
 
 ## Features
 
