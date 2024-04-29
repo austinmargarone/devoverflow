@@ -13,6 +13,7 @@ export async function POST(req: Request) {
   if (!WEBHOOK_SECRET) {
     throw new Error('Please add WEBHOOK_SECRET from Clerk Dashboard to .env or .env.local')
   }
+  // Check if the request is a POST request
  
   // Get the headers
   const headerPayload = headers();
